@@ -14,6 +14,11 @@ pipeline {
                 sh 'terraform fmt'
             }
         }
+        stage('terraform validate') {
+            steps{
+                sh 'terraform validate'
+            }
+        }
         stage('terraform Init') {
             steps{
                 sh 'terraform init'
