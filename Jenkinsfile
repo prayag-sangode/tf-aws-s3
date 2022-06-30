@@ -1,29 +1,30 @@
 pipeline {
     agent any
-
+    tools {
+       terraform 'terraform'
+    }
     stages {
-        stage('Checkout') {
-            steps {
-            checkout scm
+        stage('Git checkout') {
+           steps{
+             checkout scm
             }
         }
-        
-        stage ("terraform init") {
-            steps {
-                sh ('terraform init -reconfigure') 
+        stage('terraform format check') {
+            steps{
+                sh 'terraform fmt'
             }
         }
-        stage ("terraform plan") {
-            steps {
-                sh ('terraform plan') 
+        stage('terraform Init') {
+            steps{
+                sh 'terraform init'
             }
         }
-                
-        stage ("terraform Action") {
-            steps {
-                echo "Terraform action is --> ${action}"
-                sh ('terraform ${action} --auto-approve') 
-           }
+        stage('terraform apply') {
+            steps{
+                sh 'terraform apply --auto-approve'
+            }
         }
     }
+
+    
 }
