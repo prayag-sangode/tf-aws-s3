@@ -8,9 +8,9 @@ variable "region" {
     default = "us-east-1"
 }
 variable "aws_access_key" {
-    default = "AKIARED56AC67QDF75PK"
+    default = "<add-ur-key>"
 }
 variable "aws_secret_key" {
-    default = "BqlR7W6ti2zNiggeLwUSy954blRU4Fl7DW5VgyEX"
+    default = "<add-ur-key>"
 }
 
